@@ -28,7 +28,7 @@
 <meta property="og:description" content="摘要：搭建好hexo博客后，配置next主题的经验记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-02T06:26:27.000Z">
-<meta property="article:modified_time" content="2021-08-02T06:34:11.013Z">
+<meta property="article:modified_time" content="2021-08-02T07:35:17.656Z">
 <meta property="article:author" content="鹤立松上">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -219,7 +219,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-08-02 14:26:27 / 修改时间：14:34:11" itemprop="dateCreated datePublished" datetime="2021-08-02T14:26:27+08:00">2021-08-02</time>
+              <time title="创建时间：2021-08-02 14:26:27 / 修改时间：15:35:17" itemprop="dateCreated datePublished" datetime="2021-08-02T14:26:27+08:00">2021-08-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,58 +269,49 @@
 <hr>
 <h3 id="1-安装NexT"><a href="#1-安装NexT" class="headerlink" title="1.安装NexT"></a>1.安装NexT</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Blog根目录下git clone</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-启用主题"><a href="#2-启用主题" class="headerlink" title="2.启用主题"></a>2.启用主题</h3><p>在Blog根目录下打开==_config.yml==文件，找到<code>theme</code>字段，修改其值为<code>next</code></p>
+<h3 id="2-启用主题"><a href="#2-启用主题" class="headerlink" title="2.启用主题"></a>2.启用主题</h3><p>在Blog根目录下打开<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>_config.yml</span>文件，找到<code>theme</code>字段，修改其值为<code>next</code></p>
 <blockquote>
-<p>之后Blog根目录下的_cofig.yml称为==站点配置文件==_，themes/next/<em>config,yml称为==主题配置文件==</em></p>
+<p>之后Blog根目录下的_cofig.yml称为<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>站点配置文件</span>，themes/next/_config,yml称为是<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>主题配置文件</span></p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p>next包含四个不同的主题，可以在==主题配置文件==里修改</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#取消要使用的主题前的注释即可</span><br><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="3-设置菜单"><a href="#3-设置菜单" class="headerlink" title="3.设置菜单"></a>3.设置菜单</h3><p>包含三个部分：==菜单项（名称和链接）==，==菜单项的显示文本==，==菜单项对应图标==</p>
-<ul>
-<li>设置菜单项方法：打开主题配置文件，查找<code>menu</code>,删除前面的注释<code>#</code>即可</li>
-</ul>
+<p>next包含四个不同的主题，可以在主题配置文件里修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#取消要使用的主题前的注释即可</span><br><span class="line"># Schemes</span><br><span class="line">#scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-设置菜单"><a href="#3-设置菜单" class="headerlink" title="3.设置菜单"></a>3.设置菜单</h3><p>包含三个部分：菜单项（名称和链接），菜单项的显示文本，菜单项对应图标</p>
+<p>设置菜单项方法：打开主题配置文件，查找<code>menu</code>,删除前面的注释<code>#</code>即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home                      #首页</span><br><span class="line">  archives: /archives/ || archive      #归档</span><br><span class="line">  categories: /categories/ || th       #分类</span><br><span class="line">  tags: /tags/ || tags                 #标签</span><br><span class="line">  about: /about/ || user               #关于</span><br><span class="line">  #schedule: /schedule/ || calendar    #日历</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap    #站点地图，供搜索引擎爬取</span><br><span class="line">  #commonweal: /404/ || heartbeat      #腾讯公益404</span><br></pre></td></tr></table></figure>
 
 <p>“||”前面的是目标链接，后面的是图标名称，next使用的图标全是<a target="_blank" rel="noopener" href="http://www.fontawesome.com.cn/faicons/#web-application">图标库 - Font Awesome 中文网</a>这一网站的，有想用的图标直接在fontawesome上面找图标的名称就行。</p>
-<h5 id="如果想自定义菜单项，如想加入-something-到菜单，需要执行一下步骤"><a href="#如果想自定义菜单项，如想加入-something-到菜单，需要执行一下步骤" class="headerlink" title="==**==如果想自定义菜单项，如想加入==something==到菜单，需要执行一下步骤"></a>==**==如果想自定义菜单项，如想加入==something==到菜单，需要执行一下步骤</h5><ul>
-<li>在主题配置文件添加something项</li>
-</ul>
+<p><b> <span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>**</span>如果想自定义菜单项，如想加入<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>something</span>到菜单，需要执行一下步骤</b></p>
+<p>在主题配置文件添加something项</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home                      #首页</span><br><span class="line">  archives: /archives/ || archive      #归档</span><br><span class="line">  categories: /categories/ || th       #分类</span><br><span class="line">  tags: /tags/ || tags                 #标签</span><br><span class="line">  about: /about/ || user               #关于</span><br><span class="line">  resources: /resources/ || download   #资源</span><br><span class="line">  #schedule: /schedule/ || calendar    #日历</span><br><span class="line">  #sitemap: /sitemap.xml || sitemap    #站点地图，供搜索引擎爬取</span><br><span class="line">  #commonweal: /404/ || heartbeat      #腾讯公益404</span><br><span class="line">  something: /目标链接/ || 图标名</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>为something添加中文翻译。打开==/themes/next/languages/zh-CN.yml==,修改<code>menu</code></li>
-</ul>
+<p>为something添加中文翻译。打开<span style='background:yellow'>/themes/next/languages/zh-CN.yml</span>,修改<code>menu</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: 首页</span><br><span class="line">  archives: 归档</span><br><span class="line">  categories: 分类</span><br><span class="line">  tags: 标签</span><br><span class="line">  about: 关于</span><br><span class="line">  something: 有料</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>在根目录下打开Git Bash，输入如下代码：</li>
-</ul>
+<p>在根目录下打开Git Bash，输入如下代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;something&quot;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>此时在根目录的sources文件夹下会生成一个something文件，文件中有一个<code>index.md</code>文件，修改内容如下：</li>
-</ul>
+<p>此时在根目录的sources文件夹下会生成一个something文件，文件中有一个<code>index.md</code>文件，修改内容如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: something</span><br><span class="line">date: 2021-07-28 12:37:17</span><br><span class="line">type: &quot;something&quot;</span><br><span class="line">comments: false   #评论</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>菜单项的设置到此完结</li>
-</ul>
-<h3 id="4-设置头像和网站图标"><a href="#4-设置头像和网站图标" class="headerlink" title="4.设置头像和网站图标"></a>4.设置头像和网站图标</h3><p>打开主题配置文件，建议将图片放在==/themes/next/source/images==下，修改如下</p>
+<p>菜单项的设置到此完结</p>
+<h3 id="4-设置头像和网站图标"><a href="#4-设置头像和网站图标" class="headerlink" title="4.设置头像和网站图标"></a>4.设置头像和网站图标</h3><p>打开主题配置文件，建议将图片放在/themes/next/source/images下，修改如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#查找avater,url后面是头像位置</span><br><span class="line"></span><br><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.gif   #图片的位置，也可以是http://xxx.com/avatar.png</span><br><span class="line">  # If true, the avatar will be dispalyed in circle.</span><br><span class="line">  rounded: true   #头像展示在圈里</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false  #头像随光标旋转</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  #修改网站图标，只修改samll和medium就行</span><br><span class="line">  favicon:</span><br><span class="line">  small: /images/favicon-16x16.png  #注意图片大小16X16</span><br><span class="line">  medium: /images/favicon-32x32.png  #32X32</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /images/manifest.json</span><br><span class="line">  #ms_browserconfig: /images/browserconfig.xml</span><br></pre></td></tr></table></figure>
 
-<h3 id="5-添加本地搜索"><a href="#5-添加本地搜索" class="headerlink" title="5.添加本地搜索"></a>5.添加本地搜索</h3><ul>
-<li><p>安装插件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search</span><br></pre></td></tr></table></figure></li>
-<li><p>在站点配置文件最后加入如下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> # Search </span><br><span class="line">search:</span><br><span class="line">  path: ./public/search.xml     #索引文件的路径，相对于站点根目录</span><br><span class="line">  field: post   #搜索范围，默认是 post，还可以选择 page、all，设置成 all 表示搜索所有页面</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000  #限制搜索条目数</span><br></pre></td></tr></table></figure></li>
-<li><p>修改主题配置文件</p>
+<h3 id="5-添加本地搜索"><a href="#5-添加本地搜索" class="headerlink" title="5.添加本地搜索"></a>5.添加本地搜索</h3><p>安装插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-search</span><br></pre></td></tr></table></figure>
+
+<p>在站点配置文件最后加入如下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> # Search </span><br><span class="line">search:</span><br><span class="line">  path: ./public/search.xml     #索引文件的路径，相对于站点根目录</span><br><span class="line">  field: post   #搜索范围，默认是 post，还可以选择 page、all，设置成 all 表示搜索所有页面</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000  #限制搜索条目数</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改主题配置文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br><span class="line">  # If auto, trigger search by changing input.</span><br><span class="line">  # If manual, trigger search by pressing enter key or search button.</span><br><span class="line">  trigger: manual</span><br><span class="line">  # Show top n results per article, show all results by setting to -1</span><br><span class="line">  top_n_per_article: 1  #表示在每篇文章中显示的搜索结果数量，设成 -1 会显示每篇文章的所有搜索结果数量</span><br></pre></td></tr></table></figure>
 
-<h4 id="记录一个错误"><a href="#记录一个错误" class="headerlink" title="==记录一个错误=="></a>==记录一个错误==</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<h4 id="记录一个错误"><a href="#记录一个错误" class="headerlink" title="记录一个错误"></a><span style='background:yellow'>记录一个错误</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
 <p>三部曲之后，在4000界面预览发现搜索功能一直在loading</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#解决办法，再次更新hexo插件服务</span><br><span class="line">npm install hexo-generator-searchdb </span><br></pre></td></tr></table></figure>
@@ -328,16 +319,14 @@
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/hfyiyue/topics/1640075">Hexo NexT主题站内搜索功能异常</a> </p>
 </blockquote>
-</li>
-</ul>
 <h3 id="6-添加cnavas-nest-3D效果-设置博文内链接为蓝色"><a href="#6-添加cnavas-nest-3D效果-设置博文内链接为蓝色" class="headerlink" title="6.添加cnavas nest 3D效果,设置博文内链接为蓝色"></a>6.添加cnavas nest 3D效果,设置博文内链接为蓝色</h3><blockquote>
 <p>设置方法文章顶部知乎链接</p>
 </blockquote>
-<h3 id="7-利用-leancloud-统计单篇文章阅读量，以及实现评论功能"><a href="#7-利用-leancloud-统计单篇文章阅读量，以及实现评论功能" class="headerlink" title="7.利用==leancloud==统计单篇文章阅读量，以及实现评论功能"></a>7.利用==leancloud==统计单篇文章阅读量，以及实现评论功能</h3><blockquote>
+<h3 id="7-利用leancloud统计单篇文章阅读量，以及实现评论功能"><a href="#7-利用leancloud统计单篇文章阅读量，以及实现评论功能" class="headerlink" title="7.利用leancloud统计单篇文章阅读量，以及实现评论功能"></a>7.利用<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>leancloud</span>统计单篇文章阅读量，以及实现评论功能</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.pianshen.com/article/9435262132/">Hexo博客使用LeanCloud统计页面访问次数 - 程序员大本营</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.garryde.com/archives/48665.html">Hexo Next主题 使用LeanCloud统计文章阅读次数、添加热度排行页面 - 咖里De</a></p>
 </blockquote>
-<h3 id="8-利用-不蒜子-统计总访客数和总访问量"><a href="#8-利用-不蒜子-统计总访客数和总访问量" class="headerlink" title="8.利用==不蒜子==统计总访客数和总访问量"></a>8.利用==不蒜子==统计总访客数和总访问量</h3><ul>
+<h3 id="8-利用不蒜子统计总访客数和总访问量"><a href="#8-利用不蒜子统计总访客数和总访问量" class="headerlink" title="8.利用不蒜子统计总访客数和总访问量"></a>8.利用<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>不蒜子</span>统计总访客数和总访问量</h3><ul>
 <li>基本配置</li>
 </ul>
 <blockquote>
@@ -464,7 +453,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85NexT"><span class="nav-number">1.</span> <span class="nav-text">1.安装NexT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">2.启用主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E8%8F%9C%E5%8D%95"><span class="nav-number">3.</span> <span class="nav-text">3.设置菜单</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%83%B3%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95%E9%A1%B9%EF%BC%8C%E5%A6%82%E6%83%B3%E5%8A%A0%E5%85%A5-something-%E5%88%B0%E8%8F%9C%E5%8D%95%EF%BC%8C%E9%9C%80%E8%A6%81%E6%89%A7%E8%A1%8C%E4%B8%80%E4%B8%8B%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.0.1.</span> <span class="nav-text">&#x3D;&#x3D;**&#x3D;&#x3D;如果想自定义菜单项，如想加入&#x3D;&#x3D;something&#x3D;&#x3D;到菜单，需要执行一下步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F%E5%92%8C%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="nav-number">4.</span> <span class="nav-text">4.设置头像和网站图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="nav-number">5.</span> <span class="nav-text">5.添加本地搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF"><span class="nav-number">5.1.</span> <span class="nav-text">&#x3D;&#x3D;记录一个错误&#x3D;&#x3D;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B7%BB%E5%8A%A0cnavas-nest-3D%E6%95%88%E6%9E%9C-%E8%AE%BE%E7%BD%AE%E5%8D%9A%E6%96%87%E5%86%85%E9%93%BE%E6%8E%A5%E4%B8%BA%E8%93%9D%E8%89%B2"><span class="nav-number">6.</span> <span class="nav-text">6.添加cnavas nest 3D效果,设置博文内链接为蓝色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%88%A9%E7%94%A8-leancloud-%E7%BB%9F%E8%AE%A1%E5%8D%95%E7%AF%87%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">7.</span> <span class="nav-text">7.利用&#x3D;&#x3D;leancloud&#x3D;&#x3D;统计单篇文章阅读量，以及实现评论功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%88%A9%E7%94%A8-%E4%B8%8D%E8%92%9C%E5%AD%90-%E7%BB%9F%E8%AE%A1%E6%80%BB%E8%AE%BF%E5%AE%A2%E6%95%B0%E5%92%8C%E6%80%BB%E8%AE%BF%E9%97%AE%E9%87%8F"><span class="nav-number">8.</span> <span class="nav-text">8.利用&#x3D;&#x3D;不蒜子&#x3D;&#x3D;统计总访客数和总访问量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E6%96%87%E7%AB%A0%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E"><span class="nav-number">9.</span> <span class="nav-text">9.文章末尾添加版权声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E6%9B%B4%E6%8D%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E8%83%8C%E6%99%AF%E8%89%B2"><span class="nav-number">10.</span> <span class="nav-text">10.更换代码块背景色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="nav-number">11.</span> <span class="nav-text">11.高级设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E8%AE%BE%E7%BD%AE"><span class="nav-number">12.</span> <span class="nav-text">12.背景图片设置</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85NexT"><span class="nav-text">1.安装NexT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98"><span class="nav-text">2.启用主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E8%8F%9C%E5%8D%95"><span class="nav-text">3.设置菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F%E5%92%8C%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="nav-text">4.设置头像和网站图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="nav-text">5.添加本地搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AA%E9%94%99%E8%AF%AF"><span class="nav-text">记录一个错误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B7%BB%E5%8A%A0cnavas-nest-3D%E6%95%88%E6%9E%9C-%E8%AE%BE%E7%BD%AE%E5%8D%9A%E6%96%87%E5%86%85%E9%93%BE%E6%8E%A5%E4%B8%BA%E8%93%9D%E8%89%B2"><span class="nav-text">6.添加cnavas nest 3D效果,设置博文内链接为蓝色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%88%A9%E7%94%A8leancloud%E7%BB%9F%E8%AE%A1%E5%8D%95%E7%AF%87%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-text">7.利用leancloud统计单篇文章阅读量，以及实现评论功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%88%A9%E7%94%A8%E4%B8%8D%E8%92%9C%E5%AD%90%E7%BB%9F%E8%AE%A1%E6%80%BB%E8%AE%BF%E5%AE%A2%E6%95%B0%E5%92%8C%E6%80%BB%E8%AE%BF%E9%97%AE%E9%87%8F"><span class="nav-text">8.利用不蒜子统计总访客数和总访问量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E6%96%87%E7%AB%A0%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E"><span class="nav-text">9.文章末尾添加版权声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E6%9B%B4%E6%8D%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E8%83%8C%E6%99%AF%E8%89%B2"><span class="nav-text">10.更换代码块背景色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE"><span class="nav-text">11.高级设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E8%AE%BE%E7%BD%AE"><span class="nav-text">12.背景图片设置</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
