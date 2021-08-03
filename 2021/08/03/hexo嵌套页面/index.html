@@ -20,20 +20,25 @@
     var CONFIG = {"hostname":"hlss-lxh.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","width":300,"display":"post","padding":18,"offset":20,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前言：这是我在win下编译多文件多目录时遇到的问题，这里使用的是vscode,辅助编译工具为CMake">
+  <meta name="description" content="前言：关于嵌套页面的实现方法，官方文档和百度上都没有讲的很明白，通过自己摸索总结出这一方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows下使用cmake+vscode实现多文件多目录编译和调试">
-<meta property="og:url" content="https://hlss-lxh.github.io/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/index.html">
+<meta property="og:title" content="Hexo多层级嵌套页面方法">
+<meta property="og:url" content="https://hlss-lxh.github.io/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/index.html">
 <meta property="og:site_name" content="Hexo Blog of HLSS">
-<meta property="og:description" content="前言：这是我在win下编译多文件多目录时遇到的问题，这里使用的是vscode,辅助编译工具为CMake">
+<meta property="og:description" content="前言：关于嵌套页面的实现方法，官方文档和百度上都没有讲的很明白，通过自己摸索总结出这一方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-02T08:34:11.000Z">
-<meta property="article:modified_time" content="2021-08-03T06:47:03.113Z">
+<meta property="og:image" content="https://hlss-lxh.github.io/source/images/nested_pages/%E7%9B%AE%E5%BD%95%E5%B1%82%E7%BA%A7.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/source/images/nested_pages/hexo_index.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/source/images/nested_pages/next_index.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/source/images/nested_pages/nested_pages.png">
+<meta property="article:published_time" content="2021-08-03T08:57:20.000Z">
+<meta property="article:modified_time" content="2021-08-03T15:32:51.238Z">
 <meta property="article:author" content="鹤立松上">
-<meta property="article:tag" content="CMake">
+<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hlss-lxh.github.io/source/images/nested_pages/%E7%9B%AE%E5%BD%95%E5%B1%82%E7%BA%A7.png">
 
-<link rel="canonical" href="https://hlss-lxh.github.io/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/">
+<link rel="canonical" href="https://hlss-lxh.github.io/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/">
 
 
 <script id="page-configurations">
@@ -46,7 +51,7 @@
   };
 </script>
 
-  <title>windows下使用cmake+vscode实现多文件多目录编译和调试 | Hexo Blog of HLSS</title>
+  <title>Hexo多层级嵌套页面方法 | Hexo Blog of HLSS</title>
   
 
 
@@ -196,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hlss-lxh.github.io/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://hlss-lxh.github.io/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -209,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          windows下使用cmake+vscode实现多文件多目录编译和调试
+          Hexo多层级嵌套页面方法
         </h1>
 
         <div class="post-meta">
@@ -218,28 +223,22 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-08-02 16:34:11" itemprop="dateCreated datePublished" datetime="2021-08-02T16:34:11+08:00">2021-08-02</time>
+              <time title="创建时间：2021-08-03 16:57:20 / 修改时间：23:32:51" itemprop="dateCreated datePublished" datetime="2021-08-03T16:57:20+08:00">2021-08-03</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-03 14:47:03" itemprop="dateModified" datetime="2021-08-03T14:47:03+08:00">2021-08-03</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a>
+                  <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">Hexo博客</span></a>
                 </span>
             </span>
 
           
-            <span id="/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/" class="post-meta-item leancloud_visitors" data-flag-title="windows下使用cmake+vscode实现多文件多目录编译和调试" title="阅读次数">
+            <span id="/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo多层级嵌套页面方法" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -254,8 +253,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -270,11 +269,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><b>前言</b>：这是我在win下编译多文件多目录时遇到的问题，这里使用的是vscode,辅助编译工具为CMake</p>
+        <p>前言：关于嵌套页面的实现方法，官方文档和百度上都没有讲的很明白，通过自己摸索总结出这一方法</p>
+<hr>
 <span id="more"></span>
 
-<hr>
-<h4 id="1-创建示例"><a href="#1-创建示例" class="headerlink" title="1.创建示例"></a>1.创建示例</h4><p>交换两数 <code>a = 10,b = 80</code>,创建如下的两个文件夹，inc放自定义头文件，src放源码</p>
+<h5 id="1-在站点配置文件的menu中加入以下内容"><a href="#1-在站点配置文件的menu中加入以下内容" class="headerlink" title="1.在站点配置文件的menu中加入以下内容"></a>1.在站点配置文件的<code>menu</code>中加入以下内容</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="attr">Hexo:</span></span><br><span class="line">    <span class="attr">default:</span> <span class="string">/hexo/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-folder-open</span>	<span class="comment">#一级页面</span></span><br><span class="line">    <span class="attr">next:</span></span><br><span class="line">        <span class="attr">default:</span> <span class="string">/next/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-sticky-note</span>	<span class="comment">#二级页面</span></span><br><span class="line">        <span class="attr">Nested_pages:</span> <span class="string">/nested_pages.html</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-file</span>	<span class="comment">#三级页面，建议建立三级即可，过多会影响搜索引擎的收录</span></span><br></pre></td></tr></table></figure>
+
+<p>每一个<code>default</code>对应一个页面，我这里模仿官方文档的写法，因此<code>Nested_pages</code>的目标链接为<span style='background:yellow'><b>.html</b></span></p>
+<p><code>||</code>前面是目标链接，指向内容由自己编写，<code>||</code>后面是自定义图标，在<a target="_blank" rel="noopener" href="https://fontawesome.dashgame.com/">Font Awesome</a>这个网站复制想要的图标名称进行替换就行了</p>
+<h5 id="2-生成对应文件"><a href="#2-生成对应文件" class="headerlink" title="2.生成对应文件"></a>2.生成对应文件</h5><p>根目录下右键打开git bash,新建3个层级页面对应的文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">hexo</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">next</span></span><br><span class="line"><span class="string">hexo</span> <span class="string">new</span> <span class="string">page</span> <span class="string">nested_pages</span></span><br></pre></td></tr></table></figure>
+
+<p>生成的文件会分别以名为<span style='background:yellow'>hexo, next, nested_pages</span>的三个文件夹的形式存在根目录下的<code>source</code>文件夹中</p>
+<h5 id="2-设置文件层级结构"><a href="#2-设置文件层级结构" class="headerlink" title="2.设置文件层级结构"></a>2.设置文件层级结构</h5><p>先将nested_pages文件夹下的<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>index.md</span>文件重命名为<span style='color:文字颜色;background:yellow;font-size:文字大小;font-family:字体;'>nested_pages.md</span></p>
+<p>打开根目录下<code>source</code>文件夹，将nested_pages文件夹中的<span style='background:yellow'>index.md</span>文件移到next文件夹中，再将next文件夹移到hexo文件夹中，最终的层级目录如下:</p>
+<p><img src="/../../source/images/nested_pages/%E7%9B%AE%E5%BD%95%E5%B1%82%E7%BA%A7.png" alt="目录层级"></p>
+<h5 id="3-简单编写一下各个层级页面的内容"><a href="#3-简单编写一下各个层级页面的内容" class="headerlink" title="3.简单编写一下各个层级页面的内容"></a>3.简单编写一下各个层级页面的内容</h5><p>下面是我为了测试和区分编写的内容</p>
+<p>hexo文件夹下的index.md文件：<img src="/../../source/images/nested_pages/hexo_index.png" alt="hexo_index"></p>
+<p>next文件夹下的index.md文件</p>
+<p><img src="/../../source/images/nested_pages/next_index.png" alt="next_index"></p>
+<p>已经移动到next的nested_pages.md文件</p>
+<p><img src="/../../source/images/nested_pages/nested_pages.png" alt="nested_pages"></p>
+<h5 id="4-使用中文显示"><a href="#4-使用中文显示" class="headerlink" title="4.使用中文显示"></a>4.使用中文显示</h5><p>在<code>themes/next/languages/zh-CN</code>中的<code>menu</code>选项加入翻译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Netsed_pages: 嵌套页面</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以在不同层级的页面是继续奋“键”疾书啦</p>
+<h5 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h5><p>嵌套页面创建后的编写不同于<code>hexo n &quot;文章名称&quot;</code>，后者可以为文章添加标签和分类属性，包括<code>&lt;!--more--&gt;</code>的使用，嵌套页面内编写的文章添加不了这些属性，目前检测还不能使用<code>&lt;!--more--&gt;</code>,这是我比较不满足的地方</p>
+<p>所以建议next主题的嵌套页面用来写专栏类的文章，例如文章最后链接官方的做法</p>
+<p>我认为应该有解决办法，但是奈何技术不到家，网上又苦寻无果，只能留待来日在解决了</p>
+<p>最后提醒大家如果要删除嵌套页面，除了修改回<code>menu</code>外，文件夹应该从低层级向高层级依次删除，如先删除next文件夹下内容，再删除hexo文件夹下内容，最后删除hexo文件夹，否则系统会提示要管理员权限，然后各种操作都无法删除</p>
+<h5 id="6-参考链接"><a href="#6-参考链接" class="headerlink" title="6.参考链接"></a>6.参考链接</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/">Getting Started | NexT</a></p>
+</blockquote>
 
     </div>
 
@@ -286,11 +312,11 @@
 <div>
 <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者： </strong>hlss
+    <strong>本文作者： </strong>鹤立松上
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hlss-lxh.github.io/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/" title="windows下使用cmake+vscode实现多文件多目录编译和调试">https://hlss-lxh.github.io/2021/08/02/windows下使用cmake-vscode实现多文件多目录编译和调试/</a>
+    <a href="https://hlss-lxh.github.io/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/" title="Hexo多层级嵌套页面方法">https://hlss-lxh.github.io/2021/08/03/hexo嵌套页面/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -301,7 +327,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CMake/" rel="tag"># CMake</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
           </div>
 
         
@@ -310,13 +336,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/02/next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/" rel="prev" title="Hexo博客配置next主题">
-      <i class="fa fa-chevron-left"></i> Hexo博客配置next主题
+    <a href="/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/" rel="prev" title="windows下使用cmake+vscode实现多文件多目录编译和调试">
+      <i class="fa fa-chevron-left"></i> windows下使用cmake+vscode实现多文件多目录编译和调试
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/08/03/hexo%E5%B5%8C%E5%A5%97%E9%A1%B5%E9%9D%A2/" rel="next" title="Hexo多层级嵌套页面方法">
-      Hexo多层级嵌套页面方法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -376,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.创建示例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%9C%A8%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84menu%E4%B8%AD%E5%8A%A0%E5%85%A5%E4%BB%A5%E4%B8%8B%E5%86%85%E5%AE%B9"><span class="nav-text">1.在站点配置文件的menu中加入以下内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94%E6%96%87%E4%BB%B6"><span class="nav-text">2.生成对应文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="nav-text">2.设置文件层级结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E7%AE%80%E5%8D%95%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%8B%E5%90%84%E4%B8%AA%E5%B1%82%E7%BA%A7%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%86%85%E5%AE%B9"><span class="nav-text">3.简单编写一下各个层级页面的内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA"><span class="nav-text">4.使用中文显示</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E6%80%BB%E7%BB%93"><span class="nav-text">5.总结</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-text">6.参考链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
