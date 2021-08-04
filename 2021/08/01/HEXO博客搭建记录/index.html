@@ -28,7 +28,7 @@
 <meta property="og:description" content="​    前言：主要记录了自己利用hexo搭建一个基本静态博客的方法，以及对首次yilia主题的尝试">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-01T05:37:28.000Z">
-<meta property="article:modified_time" content="2021-08-03T06:47:15.840Z">
+<meta property="article:modified_time" content="2021-08-04T00:13:58.496Z">
 <meta property="article:author" content="鹤立松上">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-03 14:47:15" itemprop="dateModified" datetime="2021-08-03T14:47:15+08:00">2021-08-03</time>
+                <time title="修改时间：2021-08-04 08:13:58" itemprop="dateModified" datetime="2021-08-04T08:13:58+08:00">2021-08-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,8 +274,8 @@
 <ul>
 <li><p>只用前三步即可创建一个标签（例如：分类）</p>
 </li>
-<li><p>注意修改==\themes\yilia_config.yml==时的书写方式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  主页: /</span><br><span class="line">  #随笔: <span class="regexp">/tags/</span>随笔/</span><br><span class="line">  分类: <span class="regexp">/categories/</span></span><br></pre></td></tr></table></figure></li>
+<li><p>注意修改<span style='background:yellow'>\themes\yilia_config.yml</span>时的书写方式</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">主页:</span> <span class="string">/</span></span><br><span class="line">  <span class="comment">#随笔: /tags/随笔/</span></span><br><span class="line">  <span class="string">分类:</span> <span class="string">/categories/</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h4 id="more语句截断改善，以及如何给文章添加多标签"><a href="#more语句截断改善，以及如何给文章添加多标签" class="headerlink" title="more语句截断改善，以及如何给文章添加多标签"></a>more语句截断改善，以及如何给文章添加多标签</h4><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.freesion.com/article/1931619786/">参考链接</a></p>
@@ -287,29 +287,29 @@
 </li>
 <li><p>安装镜像源</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#打开git,输入指令安装镜像源，cnpm,提高速度</span><br><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">#可以输入 cnpm -v 检验</span><br></pre></td></tr></table></figure></li>
-<li><p>全局安装==hexo==</p>
+<li><p>全局安装hexo</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br><span class="line">#可以输入 hexo -v 验证</span><br></pre></td></tr></table></figure></li>
-<li><p>选择一个磁盘建立==Blog==文件夹（文件夹名字任意）</p>
+<li><p>选择一个磁盘建立Blog文件夹（文件夹名字任意）</p>
 <blockquote>
-<p>如果后期搭建或者配置博客出错,可以删除Blog文件夹和第八步中的==.ssl==文件夹，从这一步重新开始搭建</p>
+<p>如果后期搭建或者配置博客出错,可以删除Blog文件夹和第八步中的<code>.ssl</code>文件夹，从这一步重新开始搭建</p>
 </blockquote>
 </li>
-<li><p>在==Blog==文件夹下右键==git bash here==</p>
+<li><p>在Blog文件夹下右键git bash here</p>
 </li>
 <li><p>hexo初始化博客</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#输入命令初始化博客</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>此时输入命令==hexo s== ，就可以通过生成的==<a href="http://localhost:4000==访问基于本地的博客网页">http://localhost:4000==访问基于本地的博客网页</a></p>
+<p>此时输入命令hexo s ，就可以通过生成的<a href="http://localhost:4000访问基于本地的博客网页">http://localhost:4000访问基于本地的博客网页</a></p>
 </blockquote>
 </li>
 <li><p>部署博客到github的准备</p>
 <ol>
-<li><p>github新建仓库，命名为==yourname.github.io==(yourname是你的github名)</p>
+<li><p>github新建仓库，命名为yourname.github.io(yourname是你的github名)</p>
 </li>
 <li><p>安装git部署插件（仍旧在Blog目录下进行）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></li>
-<li><p>记事本打开并修改Blog根目录下的==_config.yml==中的==deploy==,如下</p>
+<li><p>记事本打开并修改Blog根目录下的_config.yml中的deploy,如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#除了中文，其余都用英文输入（包括冒号）</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:GitHub用户名/GitHub用户名.github.io.git   </span><br><span class="line">  branch: main   #github最新为main，而不是原来的master</span><br></pre></td></tr></table></figure></li>
 <li><p>回到git bash,生成SSL添加到github</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#先让github知道你是谁</span><br><span class="line">git config --global user.name &quot;yourname&quot;  #github用户名</span><br><span class="line">git config --global user.email &quot;youremail&quot;  #github注册邮箱</span><br><span class="line"></span><br><span class="line">#生成SSH，默认生成在C:\Users\username\.ssh文件夹下</span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line">#输入命令后需要连按三次enter</span><br></pre></td></tr></table></figure>
