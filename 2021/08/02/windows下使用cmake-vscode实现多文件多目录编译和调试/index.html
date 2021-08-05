@@ -20,16 +20,20 @@
     var CONFIG = {"hostname":"hlss-lxh.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","width":300,"display":"post","padding":18,"offset":20,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="前言：CMake用来编写makefile的工具，因为win下编写c++程序习惯使用的是vscode,所以写了这篇。食用之前先确保你的cmake没有问题，vscode可以选择安装两个插件 cmake和 cmake tools">
+  <meta name="description" content="前言：CMake用来编写makefile的工具，因为win下编写c++程序习惯使用的是vscode,所以写了这篇。食用之前先确保你的cmake没有问题，vscode可以选择安装两个插件 cmake和 cmake tools 如果对文中cmake指令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows下使用cmake+vscode实现多文件多目录编译和调试（1）">
 <meta property="og:url" content="https://hlss-lxh.github.io/2021/08/02/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/index.html">
 <meta property="og:site_name" content="Hexo Blog of HLSS">
-<meta property="og:description" content="前言：CMake用来编写makefile的工具，因为win下编写c++程序习惯使用的是vscode,所以写了这篇。食用之前先确保你的cmake没有问题，vscode可以选择安装两个插件 cmake和 cmake tools">
+<meta property="og:description" content="前言：CMake用来编写makefile的工具，因为win下编写c++程序习惯使用的是vscode,所以写了这篇。食用之前先确保你的cmake没有问题，vscode可以选择安装两个插件 cmake和 cmake tools 如果对文中cmake指令">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hlss-lxh.github.io/images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/test2%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/%E7%A8%8B%E5%BA%8F%E9%AA%8C%E8%AF%81.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/build-EXE-16281684943941.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/make%E7%BC%96%E8%AF%91.png">
+<meta property="og:image" content="https://hlss-lxh.github.io/images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/%E7%A8%8B%E5%BA%8F%E9%AA%8C%E8%AF%812.png">
 <meta property="article:published_time" content="2021-08-02T08:34:11.000Z">
-<meta property="article:modified_time" content="2021-08-05T10:37:08.914Z">
+<meta property="article:modified_time" content="2021-08-05T13:21:12.799Z">
 <meta property="article:author" content="鹤立松上">
 <meta property="article:tag" content="CMake">
 <meta name="twitter:card" content="summary">
@@ -223,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-05 18:37:08" itemprop="dateModified" datetime="2021-08-05T18:37:08+08:00">2021-08-05</time>
+                <time title="修改时间：2021-08-05 21:21:12" itemprop="dateModified" datetime="2021-08-05T21:21:12+08:00">2021-08-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -268,24 +272,85 @@
 
       
         <p><b>前言</b>：CMake用来编写makefile的工具，因为win下编写c++程序习惯使用的是vscode,所以写了这篇。食用之前先确保你的cmake没有问题，vscode可以选择安装两个插件 <code>cmake</code>和 <code>cmake tools</code></p>
+<p>如果对文中cmake指令</p>
 <span id="more"></span>
 
 <hr>
-<h4 id="1-创建示例"><a href="#1-创建示例" class="headerlink" title="1.创建示例"></a>1.创建示例</h4><p>这里使用一个简单示例，实现打印 <code>hello hello</code>，以及交换 <code>a = 80,b = 20</code>两个量的值。</p>
+<h5 id="1-创建示例"><a href="#1-创建示例" class="headerlink" title="1.创建示例"></a>1.创建示例</h5><p>这里使用一个简单示例，实现打印 <code>hello hello</code>，以及交换 <code>a = 80,b = 20</code>两个量的值。</p>
 <ul>
 <li>创建一个文件夹，在vscode中创建以下目录结构</li>
 </ul>
 <p><img src="/../images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/test2%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="test2目录结构"></p>
-<p>接下来编辑<code>main.cpp</code>的内容：</p>
+<ul>
+<li>接下来编辑<code>main.cpp</code>的内容：</li>
+</ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&quot;swap.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&quot;hello.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">swap</span>(&amp;a, &amp;b);	<span class="meta">#swap交换函数</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;after swap: &quot;</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a = &quot;</span> &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;b = &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">hello</span>();	<span class="meta">#hello函数输出<span class="meta-string">&#x27;hello hello&#x27;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在 <code>inc</code>文件夹中加入两个要用到的头文件 <code>swap.h</code>, <code>hello.h</code></p>
+<ul>
+<li>在 <code>inc</code>文件夹中加入两个要用到的头文件 <code>swap.h</code>, <code>hello.h</code></li>
+</ul>
 <p>swap.h内容：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *p1, <span class="keyword">int</span> *p2)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>hello.h内容：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>下面编写 <code>swap.cpp</code>和 <code>hello.cpp</code>内容</li>
+</ul>
+<p>swap.cpp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&quot;swap.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *p1, <span class="keyword">int</span> *p2)</span>\</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">    temp = *p1;</span><br><span class="line">    *p1 = *p2;</span><br><span class="line">    *p2 = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>hello.cpp</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&quot;hello.h&quot;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;hello hello&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-g-编译验证程序正确性"><a href="#2-g-编译验证程序正确性" class="headerlink" title="2.g++编译验证程序正确性"></a>2.g++编译验证程序正确性</h5><p><img src="/../images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/%E7%A8%8B%E5%BA%8F%E9%AA%8C%E8%AF%81.png" alt="程序验证"></p>
+<p>程序没问题，继续</p>
+<h5 id="3-cmake使用简介"><a href="#3-cmake使用简介" class="headerlink" title="3.cmake使用简介"></a>3.cmake使用简介</h5><p>使用cmake生成makefile一般有 <code>内部构建</code> 和 <code>外部构建</code>两种方式，内部构建生成的文件全在根目录下，影响我们的操作，所以一般采用外部构建的方法</p>
+<p>外部构建分下面几步：</p>
+<ul>
+<li>在根目录下建立 <code>build</code>文件夹</li>
+<li>编写<code>CMakeLists.txt</code>确定构建方式</li>
+<li>执行<code>cmake</code>命令构建</li>
+<li>执行<code>mingw32-make.exe</code>生成可执行文件，如果是Linux则是<code>make</code>。注意你的mingw是32还是64，可以在你的mingw安装目录下的bin文件夹下查看</li>
+</ul>
+<p>另外注意cmake的变量是要区分大小写的，例如 <code>set(EXECUTABLE_OUTPUT_PATH ../EXE)</code>,其中set大小写均可，但是后面的变量 <code>EXECUTABLE_OUTPUT_PATH</code>却只能大写</p>
+<h5 id="4-实际操作"><a href="#4-实际操作" class="headerlink" title="4.实际操作"></a>4.实际操作</h5><p>因为是多文件多目录的基础cmake使用演示，所以需要创建3个 <code>CMakeLists.txt</code></p>
+<ul>
+<li>在根目录下创建<code>CMakeLists.txt</code>,内容如下</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#指定cmake最低版本为3.0</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定项目名称</span></span><br><span class="line"><span class="keyword">project</span>(swap_hello)</span><br><span class="line"></span><br><span class="line"><span class="comment">#包含头文件路径,这里使用相对路径</span></span><br><span class="line"><span class="keyword">include_directories</span>(inc)</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加子文件夹以便于构建和编译时的搜索</span></span><br><span class="line"><span class="keyword">add_subdirectory</span>(swap)</span><br><span class="line"><span class="keyword">add_subdirectory</span>(hello)</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加编译参数</span></span><br><span class="line"><span class="keyword">add_compile_options</span>(-g -Wall -std=c++<span class="number">11</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定可执行文件生成路径,这里也是采用相对路径，是相对于外部构建文件夹build的路径</span></span><br><span class="line"><span class="comment">#这里指定生成在根目录下的EXE文件夹</span></span><br><span class="line"><span class="keyword">set</span>(EXECUTABLE_OUTPUT_PATH ../EXE)</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成可执行文件</span></span><br><span class="line"><span class="keyword">add_executable</span>(swap_hello main.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment">#链接库</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(swap_hello swap_lib hello_lib)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在swap文件夹下创建 <code>CMakeLists.txt</code></li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#包含该目录下所有源文件</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. swap_SRC)</span><br><span class="line"><span class="comment">#生成静态库</span></span><br><span class="line"><span class="keyword">add_library</span>(swap_lib STATIC <span class="variable">$&#123;swap_SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在hello文件夹下创建 <code>CMakeLists.txt</code></li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#包含该目录下所有源文件</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. hello_SRC)</span><br><span class="line"><span class="comment">#生成静态库</span></span><br><span class="line"><span class="keyword">add_library</span>(hello_lib STATIC <span class="variable">$&#123;hello_SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="5-构建项目并编译生成可执行文件"><a href="#5-构建项目并编译生成可执行文件" class="headerlink" title="5.构建项目并编译生成可执行文件"></a>5.构建项目并编译生成可执行文件</h5><h6 id="5-1-生成build文件夹，并执行cmake进行构建"><a href="#5-1-生成build文件夹，并执行cmake进行构建" class="headerlink" title="5.1 生成build文件夹，并执行cmake进行构建"></a>5.1 生成build文件夹，并执行cmake进行构建</h6><ul>
+<li>如果有安装cmake插件，在根目录的CMakeLists.txt界面下，直接<code>ctrl+shift+P</code>,搜索 <code>cmake:configure</code>,确认选择<code>GDB</code>,再确认选择<code>gcc</code>,vscode会自动创建<code>build</code>文件夹以及执行<code>cmake</code>命令</li>
+</ul>
+<p><b>手动步骤</b>：</p>
+<ul>
+<li><p>在vscode终端新建build文件夹，进入build文件夹目录，执行cmake指令</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir build	</span><br><span class="line">cd ./build</span><br><span class="line">cmake ..	//这里是以根目录的CMakeLists.txt为构建对象，而它在build的上层目录（根目录）</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>成功构建之后，在根目录下会出现一个 <code>build</code>和 <code>EXE</code>文件夹，并且build文件夹下会有一个构建成功的makefile文件</p>
+<p><img src="/../images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/build-EXE-16281684943941.png" alt="build-EXE"></p>
+<h6 id="5-2-make编译"><a href="#5-2-make编译" class="headerlink" title="5.2 make编译"></a>5.2 make编译</h6><p>依旧在build目录下，执行 <code>mingw32-make.exe</code></p>
+<p><img src="/../images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/make%E7%BC%96%E8%AF%91.png" alt="make编译"></p>
+<p>成功后根目录下的EXE文件会出现我们之前定义名为 <code>swap_hello.exe</code>的可执行文件</p>
+<p>现在我们来运行验证一下          <img src="/../images/windows%E4%B8%8B%E4%BD%BF%E7%94%A8cmake-vscode%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%96%87%E4%BB%B6%E5%A4%9A%E7%9B%AE%E5%BD%95%E7%BC%96%E8%AF%91%E5%92%8C%E8%B0%83%E8%AF%95/%E7%A8%8B%E5%BA%8F%E9%AA%8C%E8%AF%812.png" alt="程序验证2"></p>
+<p>成功。</p>
+<h5 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h5><p>文中介绍了如何利用cmake构建项目，编译成功的基本方法。</p>
+<p>建议对编写CMakeLists.txt的常用变量，以及常用指令进行了解，文中仅仅代表了基本的编写方法，cmake更多的东西（如静、动态库，宏，导入外部库等）有待自己在实践中发掘</p>
+<blockquote>
+<p>我将在下一篇中讲述如何基于cmake构建的基础是利用vscode进行调试</p>
+</blockquote>
 
     </div>
 
@@ -387,7 +452,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.创建示例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%88%9B%E5%BB%BA%E7%A4%BA%E4%BE%8B"><span class="nav-text">1.创建示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-g-%E7%BC%96%E8%AF%91%E9%AA%8C%E8%AF%81%E7%A8%8B%E5%BA%8F%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="nav-text">2.g++编译验证程序正确性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-cmake%E4%BD%BF%E7%94%A8%E7%AE%80%E4%BB%8B"><span class="nav-text">3.cmake使用简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C"><span class="nav-text">4.实际操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%B9%B6%E7%BC%96%E8%AF%91%E7%94%9F%E6%88%90%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-text">5.构建项目并编译生成可执行文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#5-1-%E7%94%9F%E6%88%90build%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%B9%B6%E6%89%A7%E8%A1%8Ccmake%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA"><span class="nav-text">5.1 生成build文件夹，并执行cmake进行构建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-2-make%E7%BC%96%E8%AF%91"><span class="nav-text">5.2 make编译</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E6%80%BB%E7%BB%93"><span class="nav-text">6.总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
