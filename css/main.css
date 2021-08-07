@@ -1211,7 +1211,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #3c93ff;
+  background: #409390;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1859,7 +1859,7 @@ pre .javascript .function {
   margin-left: 5px;
 }
 .posts-expand .post-meta {
-  color: #ddd;
+  color: #fc6423;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin: 3px 0 60px 0;
@@ -2366,7 +2366,7 @@ body {
   }
 }
 .content-wrap {
-  background: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.3);
   border-radius: initial;
   box-shadow: initial;
   box-sizing: border-box;
@@ -2388,6 +2388,7 @@ body {
 }
 .footer-inner {
   padding-right: 260px;
+  color: #ff7f24;
 }
 @media (max-width: 991px) {
   .footer-inner {
